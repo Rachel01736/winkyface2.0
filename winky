@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hey you 😜</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid; place-items: center;
+      background: #1e1b4b; color: #fff;
+      font-family: system-ui, sans-serif; text-align: center;
+    }
+    svg { width: min(70vw, 360px); height: auto; }
+    h1 { margin: 1rem 0 0; font-weight: 600; }
+
+    /* One 6s loop: idle -> wink -> tongue out -> reset */
+    .wink, .tongue {
+      transform-box: fill-box;
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+    }
+    .wink {
+      transform-origin: center;
+      animation-name: wink;
+    }
+    .tongue {
+      transform-origin: top center;
+      animation-name: tongue;
+    }
+    @keyframes wink {
+      0%, 25%   { transform: scaleY(1); }
+      30%, 42%  { transform: scaleY(0.08); }
+      48%, 100% { transform: scaleY(1); }
+    }
+    @keyframes tongue {
+      0%, 45%   { transform: scaleY(0); }
+      52%, 85%  { transform: scaleY(1); }
+      92%, 100% { transform: scaleY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wink, .tongue { animation: none; }
+      .tongue { transform: scaleY(1); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <svg viewBox="0 0 200 200" role="img" aria-label="A smiley face winking and sticking out its tongue">
+      <circle cx="100" cy="100" r="90" fill="#FFD93B" stroke="#E0A800" stroke-width="4"/>
+      <ellipse cx="70" cy="80" rx="10" ry="14" fill="#333"/>
+      <ellipse class="wink" cx="130" cy="80" rx="10" ry="14" fill="#333"/>
+      <path class="tongue" d="M85 128 h30 v24 a15 15 0 0 1 -30 0 z" fill="#FF6B81" stroke="#D94A63" stroke-width="2"/>
+      <path d="M62 122 Q100 152 138 122" fill="none" stroke="#333" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <h1>Well, hello there.</h1>
+  </main>
+</body>
+</html>
